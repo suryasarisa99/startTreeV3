@@ -1,0 +1,190 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+$final-branch-color: rgb(255, 0, 225);
+$branch-color: rgb(193, 223, 0);
+$tree-color: rgb(72, 255, 0);
+$link-color: rgb(154, 73, 147);
+
+$tree-name-color: $tree-color;
+$tree-dash-color: $tree-color;
+$tree-line-color: $tree-color;
+
+$final-branch-name-color: $final-branch-color;
+$final-branch-dash-color: $final-branch-color;
+$final-branch-line-color: $final-branch-color;
+
+$branch-name-color: $branch-color;
+$branch-dash-color: $branch-color;
+$branch-line-color: $branch-color;
+
+@mixin dash($left, $color) {
+  &::before {
+    content: "";
+    width: 8px;
+    height: 0.5px;
+    position: absolute;
+    top: calc(50% - 0.25px);
+    background-color: $color;
+    left: $left;
+  }
+}
+
+@mixin line($top, $bottom, $left, $color) {
+  &::before {
+    content: "";
+    position: absolute;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    background-color: $color;
+    width: 0.7px;
+  }
+}
+
+.tree {
+  font-family: sans-serif;
+
+  .tree-data {
+    margin-left: 20px;
+    position: relative;
+    @include line(0px, 0, 0px, $tree-line-color);
+  }
+
+  .tree-name {
+    color: $tree-name-color;
+    margin-bottom: 10px;
+    font-size: 14px;
+    user-select: none;
+  }
+
+  .branch {
+    // border-left: 0.7px solid rgb(69, 131, 255);
+    // border: 0.5px solid rgb(120, 199, 255);
+
+    .branch-data {
+      position: relative;
+      margin-left: 22px;
+      @include line(0px, 0, 0px, $branch-line-color);
+    }
+    &-name {
+      padding-left: 12px;
+      color: $branch-name-color;
+      margin-bottom: 4px;
+      user-select: none;
+      font-size: 16px;
+      position: relative;
+    }
+  }
+
+  .final-branch {
+    margin-bottom: 10px;
+    &-name {
+      font-size: 16px;
+      color: $final-branch-name-color;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding-left: 12px;
+      position: relative;
+      user-select: none;
+      margin-bottom: 5px;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 26px;
+      position: relative;
+
+      // @include line(17px, 6px, 26px, $final-branch-line-color);
+      @include line(0px, 12.9px, 0px, $final-branch-line-color);
+      // padding-left: 15px;
+
+      li {
+        list-style-type: none;
+      }
+      a {
+        text-decoration: none;
+        color: $link-color;
+        font-size: 16px;
+        user-select: none;
+        padding-left: 15px;
+        position: relative;
+        margin-bottom: 4px;
+
+        @include dash(0, rgb(255, 0, 170));
+      }
+    }
+  }
+}
+
+// final-branch
+.branch-data > .final-branch > .final-branch-name {
+  @include dash(0, $branch-dash-color);
+}
+.tree-data > .final-branch > .final-branch-name {
+  @include dash(0, $tree-dash-color);
+}
+// branch
+.tree-data > .branch > .branch-name {
+  @include dash(0, $tree-dash-color);
+}
+.branch-data > .branch > .branch-name {
+  @include dash(0, $branch-dash-color);
+}
+
+.trees {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 45px;
+  margin-left: 15px;
+
+  .tree {
+    // background-color: red;
+    // width: 220px;
+  }
+}
+
+@media (max-width: 500px) {
+  .trees {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 14px;
+
+    .tree {
+      // width: 48%;
+      // background-color: green;
+    }
+  }
+}
+
+.box {
+  accent-color: $final-branch-color;
+  border: 1px solid red;
+}
+
+.input-box {
+  position: absolute;
+  bottom: 25px;
+  left: calc(50%);
+  translate: -50%;
+}
+input {
+  background-color: transparent;
+  border: 0px;
+  border-top: 2.5px dashed $final-branch-color;
+  font-size: 18px;
+  padding-top: 8px;
+  padding-left: 6px;
+  width: 85vw;
+  color: $link-color;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: rgb(119, 36, 108);
+  }
+}
