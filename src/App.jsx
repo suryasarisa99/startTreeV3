@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { trees } from "./data";
 import Tree from "./components/Tree";
 // import "./components/tree.scss";
 function App() {
+  const prvFinalBranchRef = useRef(null)
+  let [editMode, setEditMode] = useState(false);
+
   return (
     <>
-      {/* <input type="radio" className="box" /> */}
+      <div className="row1">
+        <p>Edit Mode</p>
+        <input type="radio" className="box" checked={editMode} onClick={(e) => setEditMode(prv => !prv)} />
+      </div>
+      {/* <input type="text" /> */}
       <div className="trees">
         {trees.map((tree) => (
-          <Tree key={tree.name} tree={tree} />
+
+          <Tree
+            key={tree.name}
+            prvFinalBranchRef={prvFinalBranchRef}
+            tree={tree} editMode={editMode}
+            setEditMode={setEditMode}
+          />
+
         ))}
       </div>
-      <form
+      {/* <form
         onSubmit={(e) => {
           e.preventDefault();
           open(
@@ -22,9 +36,15 @@ function App() {
         }}
       >
         <center className="input-box">
-          <input name="search" type="text" autoFocus placeholder="Search..." />
+          <input
+            name="search"
+            className="search"
+            type="text"
+            autoFocus
+            placeholder="Search..."
+          />
         </center>
-      </form>
+      </form> */}
     </>
   );
 }

@@ -105,8 +105,9 @@ $branch-line-color: $branch-color;
 
       li {
         list-style-type: none;
+        position: relative;
       }
-      a {
+      .link {
         text-decoration: none;
         color: $link-color;
         font-size: 16px;
@@ -172,7 +173,7 @@ $branch-line-color: $branch-color;
   left: calc(50%);
   translate: -50%;
 }
-input {
+.search {
   background-color: black;
   border: 0px;
   border-top: 2.5px dashed $final-branch-color;
@@ -187,4 +188,82 @@ input {
   &::placeholder {
     color: rgb(119, 36, 108);
   }
+}
+
+.edit-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 6px;
+  // position: absolute;
+  input {
+    background-color: rgb(45, 36, 44);
+    border: none;
+    color: white;
+    padding: 4px 4px;
+    color: pink;
+    border-radius: 4px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  .edit-key {
+    width: 100px;
+  }
+}
+.top-row {
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+.edit-buttons {
+  display: flex;
+  align-items: center;
+  background-color: rgb(138, 76, 135);
+  button {
+    margin: 0;
+    border: none;
+    background-color: rgb(64, 20, 61);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    justify-content: center;
+  }
+}
+
+@mixin add-btn($bgColor, $color, $left: 0, $bottom: 0) {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  border-radius: 50%;
+  color: $color;
+  background-color: $bgColor;
+  margin-left: $left;
+  margin-bottom: $bottom;
+}
+.add-btn {
+  @include add-btn(rgb(54, 1, 44), rgb(202, 102, 202), 22px);
+}
+.add-branch-btn {
+  @include add-btn(rgb(65, 65, 8), rgb(251, 255, 0), 3px, 8px);
+}
+.green-branch-btn {
+  @include add-btn(rgb(3, 60, 8), rgb(0, 255, 68), 3px, 8px);
+}
+
+.row1 {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 6px;
+  margin-right: 25px;
+  margin-top: 12px;
+  color: rgb(18, 219, 0);
+  font-size: 12px;
 }
