@@ -32,6 +32,7 @@ const tree1 = {
   branches: [
     { type: "links", name: "Apps", data: apps },
     { type: "links", name: "Ai", data: ai },
+    { type: "links", name: "invest", data: {} },
   ],
 };
 const tree2 = {
@@ -83,6 +84,17 @@ const tree3 = {
     },
   ],
 };
+const tree5 = {
+  name: "Program",
+
+  branches: [
+    { name: "js", type: "links", data: js },
+    { name: "mongodb", type: "links", data: mongodb },
+
+    { name: "python", type: "links", data: js },
+    { name: "mongodb", type: "links", data: mongodb },
+  ],
+};
 
 const tree4 = {
   name: "kali",
@@ -94,4 +106,4 @@ const tree4 = {
     },
   ],
 };
-export const trees = [tree1, tree2, tree3, tree4];
+export const trees = [tree1, tree2, tree5, tree4];
