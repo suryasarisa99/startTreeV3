@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.scss";
 import DataProvider from "./context/DataContext.jsx";
+import { BrowserRouter } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <DataProvider>
+  <DataProvider>
+    <BrowserRouter>
       <App />
-    </DataProvider>
-  </React.StrictMode>
+    </BrowserRouter>
+  </DataProvider>
 );

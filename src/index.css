@@ -5,6 +5,7 @@
 }
 
 body {
+  background-color: black;
   color: white;
 }
 
@@ -19,16 +20,16 @@ button {
 
 .items {
   margin: 10px;
-  div {
-    padding: 8px 15px;
-    background-color: rgb(60, 60, 60);
-    margin-bottom: 4px;
-    border-radius: 6px;
-  }
+}
+.items div {
+  padding: 8px 15px;
+  background-color: rgb(60, 60, 60);
+  margin-bottom: 4px;
+  border-radius: 6px;
 }
 
 .row {
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
+}/*# sourceMappingURL=index.css.map */

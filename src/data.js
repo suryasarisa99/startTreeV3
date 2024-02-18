@@ -106,4 +106,28 @@ const tree4 = {
     },
   ],
 };
+
+export const themeTree = {
+  name: "TreeName",
+  branches: [
+    {
+      name: "BranchName1",
+      type: "links",
+      data: {
+        link1: "#1",
+        link2: "#2",
+        link3: "#3",
+      },
+    },
+    {
+      name: "BranchName2",
+      type: "links",
+      data: {
+        link1: "#4",
+        link2: "#5",
+        link3: "#6",
+      },
+    },
+  ],
+};
 export const trees = [tree1, tree2, tree5, tree4];
